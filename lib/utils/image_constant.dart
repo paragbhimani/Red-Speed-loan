@@ -24,4 +24,5 @@ class ImageConstant {
   static const about = "assets/icons/information.png";
   static const congratulations = "assets/backgrounds/Congratulations.jpg";
   static const checkStatus = "assets/icons/check_status.png";
+  static const quality = "assets/backgrounds/quality.png";
 }

@@ -17,7 +17,6 @@ import 'package:lone_counter/view/final_offer_view.dart';
 import 'package:lone_counter/view/membership_view.dart';
 import 'package:lone_counter/view/pan_details_view.dart';
 import 'package:lone_counter/view/personal_detail_view.dart';
-import 'package:lone_counter/view/simple_calculator.dart';
 import 'package:lone_counter/view/splash_view.dart';
 import 'package:lone_counter/utils/routes.dart';
 import 'package:lone_counter/view/log_in_view.dart';
@@ -45,7 +44,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.loginView, page: () => const LogInView()),
         GetPage(name: Routes.homeView, page: () => BottomNavigationScreen()),
         GetPage(name: Routes.ageDetailView, page: () => AgeDetail()),
-        GetPage(name: Routes.simpleCalculatorView, page: () => SimpleCalculator()),
         GetPage(
             name: Routes.calculatorView, page: () => const CalculatorView()),
         GetPage(
@@ -61,8 +59,7 @@ class MyApp extends StatelessWidget {
             name: Routes.emiCalculatorView, page: () => EmiCalculatorView()),
         GetPage(name: Routes.bankDetailView, page: () => BankDetailView()),
         GetPage(name: Routes.panDetailView, page: () => PanDetailView()),
-        GetPage(
-            name: Routes.finalOfferView, page: () => const FinalOfferView()),
+        GetPage(name: Routes.finalOfferView, page: () => FinalOfferView()),
         GetPage(
             name: Routes.freeMemberShipView,
             page: () => const MembershipView()),

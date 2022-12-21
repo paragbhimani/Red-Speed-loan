@@ -5,6 +5,7 @@ class StringConstant {
   static const contactDetails = 'Contact Details';
   static const compareCalculator = 'Compress Loan';
   static const interestCalculator = 'Interest Calculator';
+  static const loanStatus = 'Loan Status';
   static const loanInstant = 'Loan Instant';
   static const setting = 'Setting';
   static const ageDetail = 'Age Detail';
