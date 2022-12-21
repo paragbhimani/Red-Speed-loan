@@ -15,6 +15,7 @@ class FinalOfferView extends StatelessWidget {
 
   final FinalOfferController finalOfferController =
       Get.put(FinalOfferController());
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<FinalOfferController>(
@@ -95,58 +96,58 @@ class FinalOfferView extends StatelessWidget {
                           ],
                         ),
                         !controller.isShow
-                            ? elevatedButton(
-                                () {
-                                  String applicationId = 'INSPA';
-                                  for (int i = 0; i < 6; i++) {
-                                    applicationId = applicationId +
-                                        Random().nextInt(9).toString();
-                                  }
+                            ? Center(
+                                child: elevatedButton(
+                                  () {
+                                    String applicationId = 'INSPA';
+                                    for (int i = 0; i < 6; i++) {
+                                      applicationId = applicationId +
+                                          Random().nextInt(9).toString();
+                                    }
 
-                                  Get.defaultDialog(
-                                    title: "Congratulations",
-                                    content: Column(
-                                      children: [
-                                        SizedBox(
-                                            height: Get.height * 0.2,
-                                            width: Get.width * 0.3,
-                                            child: Image.asset(
-                                                ImageConstant.quality)),
-                                        Text(
-                                          "Your application ${applicationId}Updated Successfully",
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    ColorConstant.primaryColor),
+                                    Get.defaultDialog(
+                                      title: "Congratulations",
+                                      content: Column(
+                                        children: [
+                                          SizedBox(
+                                              height: Get.height * 0.2,
+                                              width: Get.width * 0.3,
+                                              child: Image.asset(
+                                                  ImageConstant.quality)),
+                                          Text(
+                                            "Your application ${applicationId}Updated Successfully",
+                                            textAlign: TextAlign.center,
                                           ),
-                                          onPressed: () {
-                                            List<dynamic> storedValue = [];
-                                            AppSharedPreference.value.isNotEmpty
-                                                ? storedValue =
-                                                    AppSharedPreference.value
-                                                : [];
+                                          ElevatedButton(
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      ColorConstant
+                                                          .primaryColor),
+                                            ),
+                                            onPressed: () {
+                                              List<dynamic> storedValue =
+                                                  AppSharedPreference.value;
 
-                                            storedValue.add({
-                                              "id": applicationId,
-                                              "date": DateFormat('dd/MM/yyyy')
-                                                  .format(DateTime.now())
-                                            });
-                                            AppSharedPreference.setValue(
-                                                storedValue);
-                                            print(storedValue);
-                                            Get.back();
-                                            controller.isShow = true;
-                                            controller.update();
-                                          },
-                                          child: const Text("ok"),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
+                                              storedValue.add({
+                                                "id": applicationId,
+                                                "date": DateFormat('dd/MM/yyyy')
+                                                    .format(DateTime.now())
+                                              });
+                                              AppSharedPreference.setValue(
+                                                  storedValue);
+                                              print(storedValue);
+                                              Get.back();
+                                              controller.isShow = true;
+                                              controller.update();
+                                            },
+                                            child: const Text("ok"),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
                               )
                             : const SizedBox(),
                       ]),
