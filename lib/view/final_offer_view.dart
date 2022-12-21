@@ -1,14 +1,10 @@
-import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lone_counter/controller/final_offer_controller.dart';
-import 'package:lone_counter/model/final_offer_model.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/image_constant.dart';
-import 'package:lone_counter/utils/routes.dart';
 import 'package:lone_counter/utils/string_constant.dart';
 import 'package:lone_counter/widget/app_bar.dart';
 import 'package:lone_counter/widget/custom_button.dart';
