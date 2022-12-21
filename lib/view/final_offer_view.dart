@@ -85,7 +85,8 @@ class FinalOfferView extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: elevatedButton(() {
-                Get.offAllNamed(Routes.homeView);
+                // Get.offAllNamed(Routes.homeView);
+
               },),
             ),
           ]),

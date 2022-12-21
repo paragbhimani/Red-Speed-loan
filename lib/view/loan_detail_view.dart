@@ -48,7 +48,6 @@ class LoanDetailView extends StatelessWidget {
                        errorText: controller.tenureError),
                     elevatedButton(() {
                       controller.validator();
-
                       if(controller.amtError == null && controller.tenureError == null) {
                         Get.toNamed(Routes.personalDetailView);
                       }

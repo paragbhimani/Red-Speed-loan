@@ -9,7 +9,7 @@ class LoanDetailController extends GetxController {
 
   void validator (){
     amtError = amountController.text.isEmpty ? "Please Enter Amount":null;
-    tenureError = tenureController.text.isEmpty ? "Please Enter Tenure":null;
+    tenureError = tenureController.text.isEmpty ? "Please Enter Tenure": int.parse(tenureController.text) < 3 ? 'Lone tenure Must Be Grater Than 3' :  null;
     update();
   }
 
