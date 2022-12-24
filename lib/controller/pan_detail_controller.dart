@@ -9,7 +9,7 @@ void validator (){
   Pattern pattern = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
   RegExp regex = RegExp(pattern.toString());
 
-  panError = (!regex.hasMatch(panController.text))
+  panError = (!regex.hasMatch(panController.text.toUpperCase()))
       ? "Please Enter Valid PanCard Number"
       : null;
   update();

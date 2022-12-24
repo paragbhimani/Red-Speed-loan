@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lone_counter/controller/final_offer_controller.dart';
-import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/string_constant.dart';
 import 'package:lone_counter/widget/app_bar.dart';
+import 'package:lone_counter/widget/customDialog.dart';
 import 'package:lone_counter/widget/custom_button.dart';
 import 'package:lone_counter/utils/share_preference.dart';
 
@@ -42,7 +42,7 @@ class FinalOfferView extends StatelessWidget {
                         ),
                         const Text(
                           textAlign: TextAlign.start,
-                          "on demand i residing , Severally Promises to Personal loan a sum of Payable amount together with interst rate @14.5% per year ",
+                          "On Deman I residing , Severally Promises to Personal Loan a Sum of Payable amount together with interest rate @14.5% per year.",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w400),
                         ),
@@ -104,46 +104,28 @@ class FinalOfferView extends StatelessWidget {
                                       applicationId = applicationId +
                                           Random().nextInt(9).toString();
                                     }
-
                                     Get.defaultDialog(
                                       title: "Congratulations",
-                                      content: Column(
-                                        children: [
-                                          SizedBox(
-                                              height: Get.height * 0.2,
-                                              width: Get.width * 0.3,
-                                              child: Image.asset(
-                                                  ImageConstant.quality)),
-                                          Text(
-                                            "Your application ${applicationId}Updated Successfully",
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          ElevatedButton(
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      ColorConstant
-                                                          .primaryColor),
-                                            ),
-                                            onPressed: () {
-                                              List<dynamic> storedValue =
-                                                  AppSharedPreference.value;
+                                      content: customDialog(
+                                        image: ImageConstant.quality,
+                                        text:
+                                            "Your application $applicationId Updated Successfully",
+                                        showElevated: true,
+                                        onPressed: () {
+                                          List<dynamic> storedValue =
+                                              AppSharedPreference.value;
 
-                                              storedValue.add({
-                                                "id": applicationId,
-                                                "date": DateFormat('dd/MM/yyyy')
-                                                    .format(DateTime.now())
-                                              });
-                                              AppSharedPreference.setValue(
-                                                  storedValue);
-                                              print(storedValue);
-                                              Get.back();
-                                              controller.isShow = true;
-                                              controller.update();
-                                            },
-                                            child: const Text("ok"),
-                                          ),
-                                        ],
+                                          storedValue.add({
+                                            "id": applicationId,
+                                            "date": DateFormat('dd/MM/yyyy')
+                                                .format(DateTime.now())
+                                          });
+                                          AppSharedPreference.setValue(
+                                              storedValue);
+                                          Get.back();
+                                          controller.isShow = true;
+                                          controller.update();
+                                        },
                                       ),
                                     );
                                   },

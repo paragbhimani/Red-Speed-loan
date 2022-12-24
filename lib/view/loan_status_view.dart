@@ -17,16 +17,28 @@ class LoanStatusView extends StatelessWidget {
         body: SafeArea(
           child: Stack(children: [
             Image.asset('assets/backgrounds/lone_status.png'),
-            Padding(
-                padding: EdgeInsets.only(top: Get.height * 0.1),
-                child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      'You have not\napplied yet',
-                      textAlign: TextAlign.center,
-                      style: TextStyleConstant.bold18
-                          .copyWith(color: ColorConstant.white),
-                    ))),
+            controller.data.isEmpty
+                ? Padding(
+                    padding: EdgeInsets.only(top: Get.height * 0.1),
+                    child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'You have not\napplied yet',
+                          textAlign: TextAlign.center,
+                          style: TextStyleConstant.bold18
+                              .copyWith(color: ColorConstant.white),
+                        )))
+                : Padding(
+                    padding: EdgeInsets.only(top: Get.height * 0.08),
+                    child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'If Your application in pending\nstate from last 7 days. Apply\nanother application and email\nus with application number',
+                          textAlign: TextAlign.center,
+                          style: TextStyleConstant.bold16
+                              .copyWith(fontSize: 15)
+                              .copyWith(color: ColorConstant.white),
+                        ))),
             controller.data.isEmpty
                 ? Center(
                     child: GestureDetector(
@@ -39,7 +51,7 @@ class LoanStatusView extends StatelessWidget {
                 : ListView.builder(
                     itemCount: controller.data.length,
                     padding: EdgeInsets.only(
-                        top: Get.height * 0.25,
+                        top: Get.width * 0.57,
                         left: Get.width * 0.02,
                         right: Get.width * 0.02),
                     itemBuilder: (context, index) {
@@ -74,7 +86,9 @@ class LoanStatusView extends StatelessWidget {
                                     text: controller.data[index]['id'],
                                     isHead: false),
                                 _text(
-                                    flex: 3, text: controller.data[index]['date'], isHead: false),
+                                    flex: 3,
+                                    text: controller.data[index]['date'],
+                                    isHead: false),
                                 _text(flex: 3, text: 'Pending', isHead: false)
                               ],
                             ),
@@ -97,10 +111,10 @@ class LoanStatusView extends StatelessWidget {
           child: Text(text,
               style: isHead
                   ? TextStyleConstant.bold18
-                      .copyWith(color: ColorConstant.black)
+                      .copyWith(color: ColorConstant.black,fontSize: 16)
                   : TextStyleConstant.bold16.copyWith(
                       color: ColorConstant.black,
-                      fontWeight: FontWeight.normal)),
+                      fontWeight: FontWeight.normal,fontSize: 14)),
         ));
   }
 }

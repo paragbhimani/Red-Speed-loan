@@ -8,8 +8,8 @@ String? fNameError ;
 String? lNameError ;
 
   void validator (){
-    lNameError = firstNameController.text.isEmpty ? "Please Enter First Name":null;
-    fNameError = lastNameController.text.isEmpty ? "Please Enter Last Name":null;
+    fNameError = firstNameController.text.isEmpty ? "Please Enter First Name":null;
+    lNameError = lastNameController.text.isEmpty ? "Please Enter Last Name":null;
     update();
   }
 }

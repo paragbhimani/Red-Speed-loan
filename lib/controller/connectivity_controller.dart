@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:lone_counter/utils/image_constant.dart';
+import 'package:lone_counter/widget/customDialog.dart';
 
 class InternetConnectivity extends GetxController {
   int connectionType = 0;
@@ -43,15 +45,19 @@ class InternetConnectivity extends GetxController {
       case ConnectivityResult.none:
         connectionType = 0;
         Get.defaultDialog(
-          title: "Check your Internet Connection", barrierDismissible: false,
-        );
+          title: "No Internet",
+          content: customDialog(
+              image: ImageConstant.noWifi,
+              text: "Please Check Your Internet",
+              showElevated: false),
+          barrierDismissible: false,
+        ).then((value) => connectionType == 0 ? getConnectionType() : null);
         update();
         break;
       default:
         Get.snackbar('Network Error', 'Failed to get Network Status');
         break;
     }
-    print(connectionType);
   }
 
   @override
