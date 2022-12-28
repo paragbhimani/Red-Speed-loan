@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/controller/compare_lone_calculator.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/string_constant.dart';
 import 'package:lone_counter/utils/text_style_constant.dart';
@@ -32,57 +33,61 @@ class CompareLoneCalculator extends StatelessWidget {
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(25),
                                   topRight: Radius.circular(25))),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              customSlider(
-                                heading: "Loan Amount",
-                                value: controller.loanAmount.value,
-                                min: 1,
-                                max: 500000,
-                                showValue: controller.loanAmount.value
-                                    .toStringAsFixed(0),
-                                onChange: controller.changeAmtSlider,
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              customSlider(
-                                heading: "Interest Rate",
-                                value: controller.interestRate.value,
-                                min: 1,
-                                max: 20,
-                                showValue:
-                                    "${controller.interestRate.value.toStringAsFixed(0)} %",
-                                onChange: controller.changeIntrestRate,
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              customSlider(
-                                heading: "Loan Tenure",
-                                value: controller.duration.value,
-                                min: 1,
-                                max: 12,
-                                showValue:
-                                    "${controller.duration.value.toStringAsFixed(0)} /year",
-                                onChange: controller.changeDuration,
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                customSlider(
+                                  heading: "Loan Amount",
+                                  value: controller.loanAmount.value,
+                                  min: 1,
+                                  max: 500000,
+                                  showValue: controller.loanAmount.value
+                                      .toStringAsFixed(0),
+                                  onChange: controller.changeAmtSlider,
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                customSlider(
+                                  heading: "Interest Rate",
+                                  value: controller.interestRate.value,
+                                  min: 1,
+                                  max: 20,
+                                  showValue:
+                                      "${controller.interestRate.value.toStringAsFixed(0)} %",
+                                  onChange: controller.changeIntrestRate,
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                customSlider(
+                                  heading: "Loan Tenure",
+                                  value: controller.duration.value,
+                                  min: 1,
+                                  max: 12,
+                                  showValue:
+                                      "${controller.duration.value.toStringAsFixed(0)} /year",
+                                  onChange: controller.changeDuration,
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                NativeBig()
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       Align(
                           alignment: Alignment.topCenter,
                           child: Padding(
-                            padding: EdgeInsets.only(top: Get.height * 0.06),
+                            padding: EdgeInsets.only(top: Get.width * 0.02),
                             child: Column(
                               children: [
+                                CustomBannerAd(),
                                 Text('Estimated Interest',
                                     style: TextStyleConstant.bold16.copyWith(
                                       fontSize: 12,

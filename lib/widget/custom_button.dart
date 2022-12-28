@@ -13,8 +13,8 @@ Widget customButton(
   return GestureDetector(
     onTap: onPressed,
     child: SizedBox(
-      height: MediaQuery.of(context).size.height * 0.4,
-      width: MediaQuery.of(context).size.width * 0.26,
+      height: Get.height * 0.2,
+      width: Get.width * 0.26,
       child: Column(
         children: [
           Image.asset(image),

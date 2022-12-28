@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/controller/emi_calculator_controller.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/string_constant.dart';
 import 'package:lone_counter/utils/text_style_constant.dart';
@@ -32,55 +33,58 @@ class EmiCalculatorView extends StatelessWidget {
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(25),
                                   topRight: Radius.circular(25))),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              customSlider(
-                                heading: "Loan Amount",
-                                value: controller.loanAmount.value,
-                                min: 1,
-                                max: 500000,
-                                showValue:
-                                    controller.loanAmount.value.toStringAsFixed(0),
-                                onChange: controller.changeAmtSlider,
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              customSlider(
-                                heading: "Interest Rate",
-                                value: controller.interestRate.value,
-                                min: 1,
-                                max: 10,
-                                showValue:
-                                    "${controller.interestRate.value.toStringAsFixed(0)} %",
-                                onChange: controller.changeIntrestRate,
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              customSlider(
-                                heading: "Loan Tenure",
-                                value: controller.duration.value,
-                                min: 1,
-                                max: 12,
-                                showValue:
-                                    "${controller.duration.value.toStringAsFixed(0)} /month",
-                                onChange: controller.changeDuration,
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                customSlider(
+                                  heading: "Loan Amount",
+                                  value: controller.loanAmount.value,
+                                  min: 1,
+                                  max: 500000,
+                                  showValue:
+                                      controller.loanAmount.value.toStringAsFixed(0),
+                                  onChange: controller.changeAmtSlider,
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                customSlider(
+                                  heading: "Interest Rate",
+                                  value: controller.interestRate.value,
+                                  min: 1,
+                                  max: 10,
+                                  showValue:
+                                      "${controller.interestRate.value.toStringAsFixed(0)} %",
+                                  onChange: controller.changeIntrestRate,
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                customSlider(
+                                  heading: "Loan Tenure",
+                                  value: controller.duration.value,
+                                  min: 1,
+                                  max: 12,
+                                  showValue:
+                                      "${controller.duration.value.toStringAsFixed(0)} /month",
+                                  onChange: controller.changeDuration,
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                NativeBig(),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       Align(
                           alignment: Alignment.topCenter,
                           child: Padding(
-                            padding: EdgeInsets.only(top: Get.height * 0.06),
+                            padding: EdgeInsets.only(top: Get.width * 0.03),
                             child: Column(
                               children: [
                                 Text('Your Lone EMI is',
@@ -88,6 +92,7 @@ class EmiCalculatorView extends StatelessWidget {
                                       fontSize: 12,
                                       color: ColorConstant.white,
                                     )),
+                                CustomBannerAd(),
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [

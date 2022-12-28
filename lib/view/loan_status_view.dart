@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/controller/lone_status_controller.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/routes.dart';
@@ -43,14 +44,23 @@ class LoanStatusView extends StatelessWidget {
                       ),
                     ),
               controller.data.isEmpty
-                  ? Center(
-                      child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.loanDetailView);
-                          },
-                          child: Image.asset(ImageConstant.applyNow,
-                              width: Get.width * 0.35)),
-                    )
+                  ? Padding(
+                    padding: EdgeInsets.only(top: Get.width * 0.6),
+                    child: Column(
+                      children: [
+                        CustomBannerAd(),
+                        Center(
+                            child: GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(Routes.loanDetailView);
+                                },
+                                child: Image.asset(ImageConstant.applyNow,
+                                    width: Get.width * 0.35)),
+                          ),
+                        NativeBig()
+                      ],
+                    ),
+                  )
                   : ListView.builder(
                       itemCount: controller.data.length,
                       padding: EdgeInsets.only(
@@ -60,7 +70,7 @@ class LoanStatusView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            if (index == 0)
+                            if(index == 0)
                               Padding(
                                 padding:
                                     EdgeInsets.only(bottom: Get.width * 0.02),

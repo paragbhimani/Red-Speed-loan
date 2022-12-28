@@ -11,10 +11,16 @@ import 'package:lone_counter/widget/custom_button.dart';
 
 class BottomNavigationController extends GetxController {
   RxInt index = 0.obs;
-
+@override
+  void onInit() {
+    super.onInit();
+    AppOpenAdManager.loadInterstitial();
+}
   void changeIndex(int index) {
-    // AdMobService.showInterstitialAd(); // poster ads
     this.index = index.obs;
+    AppOpenAdManager.interstitialAd?.show();
+    AppOpenAdManager.loadInterstitial();
+
     if (index == 1 && !showRateDialog) {
       Get.dialog(
         GestureDetector(
@@ -86,20 +92,4 @@ class BottomNavigationController extends GetxController {
     const HomeView(),
     const ProfileView(),
   ];
-
-  @override
-  void onInit() {
-    super.onInit();
-    AdMobService.createInterstitialAd();
-    AdMobService.createRewardedAd();
-    AdMobService.createRewardedInterstitialAd();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    AdMobService.interstitialAd?.dispose();
-    AdMobService.rewardedAd?.dispose();
-    AdMobService.rewardedInterstitialAd?.dispose();
-  }
 }

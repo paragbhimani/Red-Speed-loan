@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/controller/simple_calculator_controller.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/widget/app_bar.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -19,6 +20,7 @@ class SimpleCalculator extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
+                CustomBannerAd(),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 18.0, vertical: 10),
@@ -238,6 +240,7 @@ class SimpleCalculator extends StatelessWidget {
                           onChanged: controller.timePeriodCalculation),
                     ),
                     const SizedBox(height: 10),
+                    CustomBannerAd(),
                     SizedBox(
                       width: 350,
                       child: Padding(

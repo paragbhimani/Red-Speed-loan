@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/controller/contact_detail_controller.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/routes.dart';
 import 'package:lone_counter/utils/string_constant.dart';
 import 'package:lone_counter/widget/app_bar.dart';
@@ -48,6 +49,7 @@ class ContactDetailView extends StatelessWidget {
                         Get.toNamed(Routes.ageDetailView);
                       }
                     }),
+                    NativeBig()
                   ],
                 ),
               ),

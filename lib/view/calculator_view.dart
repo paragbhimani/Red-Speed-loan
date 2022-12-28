@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/routes.dart';
 
@@ -24,39 +25,46 @@ class _CalculatorViewState extends State<CalculatorView> {
           ),
           Padding(
             padding: EdgeInsets.only(
-                top: Get.height * 0.30,
-                left: Get.width * 0.02,
-                right: Get.width * 0.02,
-                bottom: Get.height * 0.17),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    imageTap(
-                      image: ImageConstant.emiCalculator,
-                      onTap: () {
-                        Get.toNamed(Routes.emiCalculatorView);
-                      },
-                    ),
-                    imageTap(
-                        image: ImageConstant.compareLoan,
-                        onTap: () => Get.toNamed(Routes.compareLoneCalculator))
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    imageTap(
-                        image: ImageConstant.fdCalculator,
-                        onTap: () => Get.toNamed(Routes.fdCalculatorView)),
-                    imageTap(
-                        image: ImageConstant.sipCalculator,
-                        onTap: () => Get.toNamed(Routes.simpleCalculatorView)),
-                  ],
-                ),
-              ],
+              top: Get.width * 0.35,
+              left: Get.width * 0.02,
+              right: Get.width * 0.02,
+              bottom: Get.width * 0.05
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      imageTap(
+                        image: ImageConstant.emiCalculator,
+                        onTap: () {
+                          Get.toNamed(Routes.emiCalculatorView);
+                        },
+                      ),
+                      imageTap(
+                          image: ImageConstant.compareLoan,
+                          onTap: () =>
+                              Get.toNamed(Routes.compareLoneCalculator))
+                    ],
+                  ),
+                  NativeBig(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      imageTap(
+                          image: ImageConstant.fdCalculator,
+                          onTap: () => Get.toNamed(Routes.fdCalculatorView)),
+                      imageTap(
+                          image: ImageConstant.sipCalculator,
+                          onTap: () =>
+                              Get.toNamed(Routes.simpleCalculatorView)),
+                    ],
+                  ),
+                  NativeBig(),
+                ],
+              ),
             ),
           )
         ]),

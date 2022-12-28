@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/model/loan_instant_model.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/routes.dart';
@@ -16,11 +17,10 @@ class InstantLoanView extends StatelessWidget {
     return Scaffold(
       appBar: customAppBar(title: StringConstant.loanInstant),
       body: SafeArea(
-        child: ListView.builder(
-            padding: const EdgeInsets.only(top: 8),
-            itemCount: loanInstantModel.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              GestureDetector(
                 onTap: (){
                   Get.toNamed(Routes.loanDetailView);
                 },
@@ -34,18 +34,196 @@ class InstantLoanView extends StatelessWidget {
                     ),
                     leading: Image.asset(ImageConstant.loanInstant),
                     title: Text(
-                      loanInstantModel[index].title ?? "",
+                      loanInstantModel[0].title ?? "",
                       style: TextStyleConstant.bold16Black,
                     ),
                     subtitle: Text(
-                      loanInstantModel[index].subTitle ?? "",
+                      loanInstantModel[0].subTitle ?? "",
                       style: TextStyleConstant.bold14Black,
                     ),
                     trailing: const Icon(Icons.keyboard_arrow_right),
                   ),
                 ),
-              );
-            }),
+              ),NativeBig(),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.loanDetailView);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          color: ColorConstant.primaryColor, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    leading: Image.asset(ImageConstant.loanInstant),
+                    title: Text(
+                      loanInstantModel[0].title ?? "",
+                      style: TextStyleConstant.bold16Black,
+                    ),
+                    subtitle: Text(
+                      loanInstantModel[0].subTitle ?? "",
+                      style: TextStyleConstant.bold14Black,
+                    ),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                ),
+              ),NativeBig(),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.loanDetailView);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          color: ColorConstant.primaryColor, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    leading: Image.asset(ImageConstant.loanInstant),
+                    title: Text(
+                      loanInstantModel[0].title ?? "",
+                      style: TextStyleConstant.bold16Black,
+                    ),
+                    subtitle: Text(
+                      loanInstantModel[0].subTitle ?? "",
+                      style: TextStyleConstant.bold14Black,
+                    ),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                ),
+              ),NativeBig(),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.loanDetailView);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          color: ColorConstant.primaryColor, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    leading: Image.asset(ImageConstant.loanInstant),
+                    title: Text(
+                      loanInstantModel[0].title ?? "",
+                      style: TextStyleConstant.bold16Black,
+                    ),
+                    subtitle: Text(
+                      loanInstantModel[0].subTitle ?? "",
+                      style: TextStyleConstant.bold14Black,
+                    ),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                ),
+              ),NativeBig(),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.loanDetailView);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          color: ColorConstant.primaryColor, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    leading: Image.asset(ImageConstant.loanInstant),
+                    title: Text(
+                      loanInstantModel[0].title ?? "",
+                      style: TextStyleConstant.bold16Black,
+                    ),
+                    subtitle: Text(
+                      loanInstantModel[0].subTitle ?? "",
+                      style: TextStyleConstant.bold14Black,
+                    ),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                ),
+              ),NativeBig(),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.loanDetailView);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          color: ColorConstant.primaryColor, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    leading: Image.asset(ImageConstant.loanInstant),
+                    title: Text(
+                      loanInstantModel[0].title ?? "",
+                      style: TextStyleConstant.bold16Black,
+                    ),
+                    subtitle: Text(
+                      loanInstantModel[0].subTitle ?? "",
+                      style: TextStyleConstant.bold14Black,
+                    ),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                ),
+              ),NativeBig(),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.loanDetailView);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          color: ColorConstant.primaryColor, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    leading: Image.asset(ImageConstant.loanInstant),
+                    title: Text(
+                      loanInstantModel[0].title ?? "",
+                      style: TextStyleConstant.bold16Black,
+                    ),
+                    subtitle: Text(
+                      loanInstantModel[0].subTitle ?? "",
+                      style: TextStyleConstant.bold14Black,
+                    ),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                ),
+              ),NativeBig(),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.loanDetailView);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          color: ColorConstant.primaryColor, width: 2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    leading: Image.asset(ImageConstant.loanInstant),
+                    title: Text(
+                      loanInstantModel[0].title ?? "",
+                      style: TextStyleConstant.bold16Black,
+                    ),
+                    subtitle: Text(
+                      loanInstantModel[0].subTitle ?? "",
+                      style: TextStyleConstant.bold14Black,
+                    ),
+                    trailing: const Icon(Icons.keyboard_arrow_right),
+                  ),
+                ),
+              ),
+              NativeBig(),
+            ],
+          ),
+        ),
       ),
     );
   }

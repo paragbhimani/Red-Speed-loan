@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lone_counter/controller/redeemed_controller.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/text_style_constant.dart';
@@ -14,70 +15,75 @@ class RedeemedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => SafeArea(
-          child: Stack(
-            children: [
-              Image.asset('assets/backgrounds/recomadition.jpg',
-                  height: Get.height, width: Get.width, fit: BoxFit.fill),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: Get.width * 0.15,
-                    right: Get.width * 0.15,
-                    top: Get.height * 0.075),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Text(
-                        "All Analysis:",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: Get.width * 0.05,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Text(
-                        "if you apply for 3 or more loan products , the loan approve rate will be increase up to 99%",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: Get.width * 0.04,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
+    return GetBuilder<RedeemedController>(builder: (controller) => SafeArea(
+      child: Stack(
+        children: [
+          Image.asset('assets/backgrounds/recomadition.jpg',
+              height: Get.height, width: Get.width, fit: BoxFit.fill),
+          Padding(
+            padding: EdgeInsets.only(
+                left: Get.width * 0.15,
+                right: Get.width * 0.15,
+                top: Get.height * 0.075),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    "All Analysis:",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: Get.width * 0.05,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: Get.height / 3.6),
-                child: controller.data.isNotEmpty
-                    ? ListView.builder(
-                        itemCount: controller.data.length,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return _child(
-                              maxLoneAmount: controller.data[index]
-                                  ['max_lone_amount'],
-                              minLoneAmount: controller.data[index]
-                                  ['min_lone_amount'],
-                              name: controller.data[index]['name'],
-                              loneInterest: controller.data[index]
-                                  ['interest_rate'],
-                              apkId: controller.data[index]['lanuch_app_id'],
-                              imgUrl: controller.data[index]['img_url']);
-                        },
-                      )
-                    : const Center(
-                        child: CircularProgressIndicator(
-                          color: ColorConstant.primaryColor,
-                        ),
-                      ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    "if you apply for 3 or more loan products , the loan approve rate will be increase up to 99%",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: Get.width * 0.04,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ));
+          Padding(
+            padding: EdgeInsets.only(top: Get.height / 3.6),
+            child: controller.data.isNotEmpty
+                ? ListView.builder(
+              itemCount: controller.data.length,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    NativeSmall(),
+                    _child(
+                        maxLoneAmount: controller.data[index]
+                        ['max_lone_amount'],
+                        minLoneAmount: controller.data[index]
+                        ['min_lone_amount'],
+                        name: controller.data[index]['name'],
+                        loneInterest: controller.data[index]
+                        ['interest_rate'],
+                        apkId: controller.data[index]['lanuch_app_id'],
+                        imgUrl: controller.data[index]['img_url']),
+                  ],
+                );
+              },
+            )
+                : const Center(
+              child: CircularProgressIndicator(
+                color: ColorConstant.primaryColor,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),);
   }
 
   Widget _child(

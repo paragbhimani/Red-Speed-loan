@@ -1,6 +1,8 @@
+/*
 import 'dart:io';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:lone_counter/helper/ad_helper.dart';
 
 class AdMobService {
   static InterstitialAd? interstitialAd;
@@ -59,8 +61,10 @@ class AdMobService {
         createInterstitialAd();
       },
     );
+    interstitialAd!.adLoadCallback;
     interstitialAd!.show();
     interstitialAd = null;
+    createInterstitialAd();
   }
 
   static void createRewardedAd() {
@@ -163,5 +167,298 @@ class AdMobService {
     rewardedInterstitialAd = null;
   }
 
+static Future<BannerAd> bannerAd() async {
+    BannerAd? adLoaded;
+ await BannerAd(
+    adUnitId: AdHelper.bannerAdUnitId,
+    size: AdSize.banner,
+    request: const AdRequest(),
+    listener: BannerAdListener(
+      onAdLoaded: (ad) {
+        adLoaded = ad as BannerAd;
 
+      },
+      onAdFailedToLoad: (ad, error) {
+        ad.dispose();
+        print('Ad load failed (code=${error.code} message=${error.message})');
+      },
+    ),
+  ).load();
+  return adLoaded!;
+}
+}
+*/
+import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:lone_counter/utils/app_config.dart';
+
+class AppOpenAdManager {
+  AppOpenAd? appOpenAd;
+  bool isShowingAd = false;
+  static bool isLoaded = false;
+
+  /// Load an AppOpenAd.
+  void loadAd() {
+    print('Id -----------------> ${AppConfig.appopen.toString()}');
+    AppOpenAd.load(
+      adUnitId: AppConfig.appopen.toString(),
+      orientation: AppOpenAd.orientationPortrait,
+      request: const AdRequest(),
+      adLoadCallback: AppOpenAdLoadCallback(
+        onAdLoaded: (ad) {
+          print("Ad Loadede.................................");
+          print(ad);
+          appOpenAd = ad;
+          isLoaded = true;
+
+        },
+        onAdFailedToLoad: (error) {
+          print('error ------> $error');
+          // Handle the error.
+        },
+      ),
+    );
+  }
+
+  // Whether an ad is available to be shown.
+  bool get isAdAvailable {
+    return appOpenAd != null;
+  }
+
+  void showAdIfAvailable() {
+    print(
+        "Called=====================================================================");
+    if (appOpenAd == null) {
+      print('Tried to show ad before available.');
+      loadAd();
+      return;
+    }
+    if (isShowingAd) {
+      print('Tried to show ad while already showing an ad.');
+      return;
+    }
+    // Set the fullScreenContentCallback and show the ad.
+    appOpenAd!.fullScreenContentCallback = FullScreenContentCallback(
+      onAdShowedFullScreenContent: (ad) {
+        isShowingAd = true;
+        print('$ad onAdShowedFullScreenContent');
+      },
+      onAdFailedToShowFullScreenContent: (ad, error) {
+        print('$ad onAdFailedToShowFullScreenContent: $error');
+        isShowingAd = false;
+        ad.dispose();
+        appOpenAd = null;
+      },
+      onAdDismissedFullScreenContent: (ad) {
+        print('$ad onAdDismissedFullScreenContent');
+        isShowingAd = false;
+        ad.dispose();
+        appOpenAd = null;
+        loadAd();
+      },
+    );
+    appOpenAd!.show();
+  }
+
+
+ static InterstitialAd? interstitialAd;
+ static bool isInterstitialAdLoaded = false;
+
+ static void loadInterstitial() {
+    InterstitialAd.load(
+      adUnitId: AppConfig.interstrial_ad.toString(),
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          print("Ad Loaded");
+
+          interstitialAd = ad;
+          isInterstitialAdLoaded = true;
+
+        },
+        onAdFailedToLoad: (error) {
+          print("Ad Failed to Load");
+        },
+      ),
+    );
+  }
+}
+
+class NativeSmall extends StatefulWidget {
+  const NativeSmall({Key? key}) : super(key: key);
+
+  @override
+  _NativeSmallState createState() => _NativeSmallState();
+}
+
+class _NativeSmallState extends State<NativeSmall> {
+  late NativeAd _adSmall;
+
+  bool _isAdLoaded = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+print('add laoded ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> ${AppConfig.native_id}');
+    _adSmall = NativeAd(
+      // Here in adUnitId: add your own ad unit ID before release build
+      // adUnitId: native_id.toString(),
+      adUnitId: AppConfig.native_id.toString(),
+      factoryId: 'listTileSmall',
+      request: const AdRequest(),
+      listener: NativeAdListener(
+        onAdLoaded: (_) {
+          print("loaded ____>");
+print('add laoded Id~~~~~~~~~~~> ${AppConfig.native_id}');
+          setState(() {
+            _isAdLoaded = true;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+
+          // Releases an ad resource when it fails to load
+          ad.dispose();
+
+          print('Ad load failed (code=${error.code} message=${error.message})');
+        },
+      ),
+    );
+    _adSmall.load();
+  }
+
+  @override
+  void dispose() {
+    _adSmall.dispose();
+
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return //  small native ad template widget
+      Card(
+        child: _isAdLoaded
+            ? Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            child: AdWidget(ad: _adSmall),
+            height: 150,
+            width: 400,
+          ),
+        )
+            : const SizedBox.shrink(),
+      );
+  }
+}
+
+class NativeBig extends StatefulWidget {
+  const NativeBig({Key? key}) : super(key: key);
+
+  @override
+  _NativeBigState createState() => _NativeBigState();
+}
+
+class _NativeBigState extends State<NativeBig> {
+  late NativeAd _adMedium;
+  bool _isAdLoadedMedium = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _adMedium = NativeAd(
+      // Here in adUnitId: add your own ad unit ID before release build
+
+      adUnitId: AppConfig.native_id.toString(),
+      // adUnitId: "/6499/example/native",
+      factoryId: 'listTileMedium',
+      request: const AdRequest(),
+      listener: NativeAdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            _isAdLoadedMedium = true;
+          });
+        },
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+          print('Ad load failed (code=${error.code} message=${error.message})');
+        },
+      ),
+    );
+
+    _adMedium.load();
+  }
+
+  @override
+  void dispose() {
+    _adMedium.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return
+      //medium native ad template widget
+      _isAdLoadedMedium
+          ? Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          child: AdWidget(ad: _adMedium),
+          height: 380,
+          width: 400,
+        ),
+      )
+          : const SizedBox.shrink();
+  }
+}
+
+
+class CustomBannerAd extends StatefulWidget {
+  const CustomBannerAd({Key? key}) : super(key: key);
+
+  @override
+  State<CustomBannerAd> createState() => _CustomBannerAdState();
+}
+
+class _CustomBannerAdState extends State<CustomBannerAd> {
+  BannerAd ?bannerAd;
+  bool isBannerAdLoaded = false;
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    bannerAd = BannerAd(
+      size: AdSize.banner,
+      // adUnitId: "/6499/example/banner",
+      adUnitId: AppConfig.banner_id.toString(),
+      listener: BannerAdListener(onAdFailedToLoad: (ad, error) {
+        print("Ad Failed to Load");
+        ad.dispose();
+      }, onAdLoaded: (ad) {
+        print("Ad Loaded");
+        setState(() {
+          isBannerAdLoaded = true;
+        });
+      }),
+      request: const AdRequest(),
+    );
+    bannerAd!.load();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return isBannerAdLoaded
+        ? SizedBox(
+      width: double.infinity,
+      height: 50,
+      child: AdWidget(
+        ad: bannerAd!,
+      ),
+    )
+        : SizedBox();
+  }
 }

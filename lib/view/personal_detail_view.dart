@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/controller/personal_detail_controller.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/routes.dart';
 import 'package:lone_counter/utils/string_constant.dart';
@@ -60,6 +61,7 @@ class PersonalDetailView extends StatelessWidget {
                         }
                       },
                     ),
+                    NativeBig()
                   ],
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/routes.dart';
 import 'package:lone_counter/utils/string_constant.dart';
@@ -29,31 +30,34 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
       appBar: customAppBar(title: StringConstant.setting),
       body: SafeArea(
-        child: Column(
-          children: [
-            GestureDetector(
-                onTap: () async {
-                  await StoreRedirect.redirect(
-                      androidAppId: 'com.example.lone_counter');
-                },
-                child: card(ImageConstant.star, "Rate App")),
-            GestureDetector(
-                onTap: () {
-                  Get.toNamed(Routes.freeMemberShipView);
-                },
-                child: card(ImageConstant.gift, "Free MemberShip")),
-            GestureDetector(
-                onTap: () async {
-                  await launchUrl(Uri.parse(
-                      'https://rapidcashloans.blogspot.com/2022/12/privacy-policy.html'));
-                },
-                child: card(ImageConstant.privacy, "Privacy Policy")),
-            GestureDetector(
-                onTap: () {
-                  Get.toNamed(Routes.aboutUs);
-                },
-                child: card(ImageConstant.about, "About Us")),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              GestureDetector(
+                  onTap: () async {
+                    await StoreRedirect.redirect(
+                        androidAppId: 'com.example.lone_counter');
+                  },
+                  child: card(ImageConstant.star, "Rate App")),
+              GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.freeMemberShipView);
+                  },
+                  child: card(ImageConstant.gift, "Free MemberShip")),
+              GestureDetector(
+                  onTap: () async {
+                    await launchUrl(Uri.parse(
+                        'https://rapidcashloans.blogspot.com/2022/12/privacy-policy.html'));
+                  },
+                  child: card(ImageConstant.privacy, "Privacy Policy")),
+              GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.aboutUs);
+                  },
+                  child: card(ImageConstant.about, "About Us")),
+              NativeBig(),
+            ],
+          ),
         ),
       ),
     );
