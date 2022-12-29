@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/routes.dart';
-import 'package:lone_counter/utils/share_preference.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,15 +10,15 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  // final InternetConnectivity internetConnectivity = Get.find<InternetConnectivity>();
+class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver {
   AppOpenAdManager appOpenAdManager = AppOpenAdManager();
+  bool isPaused = false;
 
   @override
   void initState() {
     super.initState();
     print('initState');
-    AppSharedPreference.clear;
+    WidgetsBinding.instance.addObserver(this);
     appOpenAdManager.loadAd();
     Future.delayed(
       const Duration(seconds: 3),
@@ -31,7 +30,18 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
 
-
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+      print("Resumed==========================");
+    if (state == AppLifecycleState.paused) {
+      isPaused = true;
+    }
+    if (state == AppLifecycleState.resumed && isPaused) {
+      appOpenAdManager.showAdIfAvailable();
+      isPaused = false;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

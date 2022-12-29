@@ -19,11 +19,4 @@ class LoanDetailController extends GetxController {
     super.onInit();
     AppOpenAdManager.loadInterstitial();
   }
-  @override
-  void onClose() {
-    super.onClose();
-    print("on delete");
-    AppOpenAdManager.interstitialAd?.show();
-    AppOpenAdManager.loadInterstitial();
-  }
 }

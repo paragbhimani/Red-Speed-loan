@@ -6,10 +6,10 @@ class LoneStatusController extends GetxController{
 List<dynamic> data = [];
 
 @override
-  void onInit() {
-    // TODO: implement onInit
+  Future<void> onInit() async {
     super.onInit();
-    data = AppSharedPreference.value;
+    data = await AppSharedPreference.value;
+    print('----------> $data ||| ${AppSharedPreference.value}');
+    update();
   }
-
 }

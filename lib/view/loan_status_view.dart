@@ -52,6 +52,7 @@ class LoanStatusView extends StatelessWidget {
                         Center(
                             child: GestureDetector(
                                 onTap: () {
+                                  AppOpenAdManager.interstitialAd?.show();
                                   Get.toNamed(Routes.loanDetailView);
                                 },
                                 child: Image.asset(ImageConstant.applyNow,
@@ -61,7 +62,6 @@ class LoanStatusView extends StatelessWidget {
                       ],
                     ),
                   )
-              ///have kyay baki nathi   vdhare ave to ketlu thay e check
                   : SingleChildScrollView(
                     child: Column(
                       children: [

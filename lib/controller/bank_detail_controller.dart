@@ -32,12 +32,5 @@ class BankDetailController extends GetxController {
     super.onInit();
     AppOpenAdManager.loadInterstitial();
   }
-  @override
-  void onClose() {
-    // TODO: implement dispose
-    super.dispose();
-    AppOpenAdManager.interstitialAd?.show();
-    AppOpenAdManager.loadInterstitial();
-  }
 
 }

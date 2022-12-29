@@ -96,9 +96,7 @@ class FinalOfferView extends StatelessWidget {
                                     fontSize: 20, fontWeight: FontWeight.w300),
                               ),
                             ],
-                          ),
-                          !controller.isShow
-                              ? Center(
+                          ),Center(
                                   child: elevatedButton(
                                     () {
                                       String applicationId = 'INSPA';
@@ -113,10 +111,9 @@ class FinalOfferView extends StatelessWidget {
                                           text:
                                               "Your application $applicationId Updated Successfully",
                                           showElevated: true,
-                                          onPressed: () {
-                                            List<dynamic> storedValue =
+                                          onPressed: () async {
+                                            List<dynamic> storedValue = await
                                                 AppSharedPreference.value;
-
                                             storedValue.add({
                                               "id": applicationId,
                                               "date": DateFormat('dd/MM/yyyy')
@@ -124,16 +121,15 @@ class FinalOfferView extends StatelessWidget {
                                             });
                                             AppSharedPreference.setValue(
                                                 storedValue);
+                                            print(AppSharedPreference.value);
                                             Get.back();
-                                            controller.isShow = true;
                                             controller.update();
                                           },
                                         ),
                                       );
                                     },
                                   ),
-                                )
-                              : const SizedBox(),
+                                ),
                           NativeBig(),
                         ]),
                   ),
