@@ -61,58 +61,67 @@ class LoanStatusView extends StatelessWidget {
                       ],
                     ),
                   )
-                  : ListView.builder(
-                      itemCount: controller.data.length,
-                      padding: EdgeInsets.only(
-                          top: Get.width * 0.57,
-                          left: Get.width * 0.02,
-                          right: Get.width * 0.02),
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            if(index == 0)
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(bottom: Get.width * 0.02),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    _text(flex: 2, text: 'Sr.No', isHead: true),
-                                    _text(
-                                        flex: 4, text: 'Appl.No', isHead: true),
-                                    _text(flex: 3, text: 'Date', isHead: true),
-                                    _text(flex: 3, text: 'Status', isHead: true)
-                                  ],
-                                ),
-                              ),
-                            Padding(
-                              padding:
-                                  EdgeInsets.only(bottom: Get.width * 0.02),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+              ///have kyay baki nathi   vdhare ave to ketlu thay e check
+                  : SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                            itemCount: controller.data.length,
+                            shrinkWrap: true,
+                            padding: EdgeInsets.only(
+                                top: Get.width * 0.57,
+                                left: Get.width * 0.02,
+                                right: Get.width * 0.02),
+                            itemBuilder: (context, index) {
+                              return Column(
                                 children: [
-                                  _text(
-                                      flex: 2,
-                                      text: (index + 1).toString(),
-                                      isHead: false),
-                                  _text(
-                                      flex: 4,
-                                      text: controller.data[index]['id'],
-                                      isHead: false),
-                                  _text(
-                                      flex: 3,
-                                      text: controller.data[index]['date'],
-                                      isHead: false),
-                                  _text(flex: 3, text: 'Pending', isHead: false)
-                                ],
-                              ),
-                            ),
-                          ],
-                        );
-                      },
+                                  if(index == 0)
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.only(bottom: Get.width * 0.02),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          _text(flex: 2, text: 'Sr.No', isHead: true),
+                                          _text(
+                                              flex: 4, text: 'Appl.No', isHead: true),
+                                          _text(flex: 3, text: 'Date', isHead: true),
+                                          _text(flex: 3, text: 'Status', isHead: true)
+                                        ],
+                                      ),
+                                    ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(bottom: Get.width * 0.02),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        _text(
+                                            flex: 2,
+                                            text: (index + 1).toString(),
+                                            isHead: false),
+                                        _text(
+                                            flex: 4,
+                                            text: controller.data[index]['id'],
+                                            isHead: false),
+                                        _text(
+                                            flex: 3,
+                                            text: controller.data[index]['date'],
+                                            isHead: false),
+                                        _text(flex: 3, text: 'Pending', isHead: false)
+                                      ],
+                                    ),
+                                  ),
+                                ]
+                              );
+                            },
+                          ),
+                        NativeBig(),
+                      ],
                     ),
+                  ),
             ],
           ),
         ),

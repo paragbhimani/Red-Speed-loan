@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lone_counter/servics/ad_mob_services.dart';
 
 class BankDetailController extends GetxController {
   TextEditingController bankNameController = TextEditingController();
@@ -25,4 +26,18 @@ class BankDetailController extends GetxController {
         ifscCodeController.text.isEmpty ? "Please Enter Account Number" : null;
     update();
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+    AppOpenAdManager.loadInterstitial();
+  }
+  @override
+  void onClose() {
+    // TODO: implement dispose
+    super.dispose();
+    AppOpenAdManager.interstitialAd?.show();
+    AppOpenAdManager.loadInterstitial();
+  }
+
 }
