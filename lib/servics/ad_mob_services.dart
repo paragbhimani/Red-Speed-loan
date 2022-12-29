@@ -199,9 +199,9 @@ class AppOpenAdManager {
 
   /// Load an AppOpenAd.
   void loadAd() {
-    print('Id -----------------> ${AppConfig.appopen.toString()}');
+    print('Id -----------------> ${AppConfig.appOpen.toString()}');
     AppOpenAd.load(
-      adUnitId: AppConfig.appopen.toString(),
+      adUnitId: AppConfig.appOpen.toString(),
       orientation: AppOpenAd.orientationPortrait,
       request: const AdRequest(),
       adLoadCallback: AppOpenAdLoadCallback(
@@ -266,7 +266,7 @@ class AppOpenAdManager {
 
  static void loadInterstitial() {
     InterstitialAd.load(
-      adUnitId: AppConfig.interstrial_ad.toString(),
+      adUnitId: AppConfig.interstitialAd.toString(),
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
@@ -300,17 +300,17 @@ class _NativeSmallState extends State<NativeSmall> {
   @override
   void initState() {
     super.initState();
-print('add laoded ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> ${AppConfig.native_id}');
+print('add laoded ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> ${AppConfig.nativeId}');
     _adSmall = NativeAd(
       // Here in adUnitId: add your own ad unit ID before release build
       // adUnitId: native_id.toString(),
-      adUnitId: AppConfig.native_id.toString(),
+      adUnitId: AppConfig.nativeId.toString(),
       factoryId: 'listTileSmall',
       request: const AdRequest(),
       listener: NativeAdListener(
         onAdLoaded: (_) {
           print("loaded ____>");
-print('add laoded Id~~~~~~~~~~~> ${AppConfig.native_id}');
+print('add laoded Id~~~~~~~~~~~> ${AppConfig.nativeId}');
           setState(() {
             _isAdLoaded = true;
           });
@@ -371,7 +371,7 @@ class _NativeBigState extends State<NativeBig> {
     _adMedium = NativeAd(
       // Here in adUnitId: add your own ad unit ID before release build
 
-      adUnitId: AppConfig.native_id.toString(),
+      adUnitId: AppConfig.nativeId.toString(),
       // adUnitId: "/6499/example/native",
       factoryId: 'listTileMedium',
       request: const AdRequest(),
@@ -434,7 +434,7 @@ class _CustomBannerAdState extends State<CustomBannerAd> {
     bannerAd = BannerAd(
       size: AdSize.banner,
       // adUnitId: "/6499/example/banner",
-      adUnitId: AppConfig.banner_id.toString(),
+      adUnitId: AppConfig.bannerId.toString(),
       listener: BannerAdListener(onAdFailedToLoad: (ad, error) {
         print("Ad Failed to Load");
         ad.dispose();

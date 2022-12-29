@@ -38,7 +38,9 @@ final PanDetailController panDetailController = Get.put(PanDetailController());
                       controller.validator();
                       if (controller.panError == null) {
                         Get.toNamed(Routes.finalOfferView);
-                      }
+                        AppOpenAdManager.interstitialAd?.show();
+                        AppOpenAdManager.loadInterstitial();
+                                              }
                     }),
                     NativeBig()
                   ],

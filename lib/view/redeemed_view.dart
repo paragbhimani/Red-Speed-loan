@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lone_counter/controller/redeemed_controller.dart';
 import 'package:lone_counter/servics/ad_mob_services.dart';
+import 'package:lone_counter/utils/app_config.dart';
 import 'package:lone_counter/utils/colors_constant.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/text_style_constant.dart';
@@ -60,17 +61,14 @@ class RedeemedView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    NativeSmall(),
+                    const NativeSmall(),
                     _child(
-                        maxLoneAmount: controller.data[index]
-                        ['max_lone_amount'],
-                        minLoneAmount: controller.data[index]
-                        ['min_lone_amount'],
-                        name: controller.data[index]['name'],
-                        loneInterest: controller.data[index]
-                        ['interest_rate'],
-                        apkId: controller.data[index]['lanuch_app_id'],
-                        imgUrl: controller.data[index]['img_url']),
+                        maxLoneAmount: 2000000,
+                        minLoneAmount: 10000,
+                        name: "True Lone",
+                        loneInterest: '0.06%',
+                        apkId: AppConfig.appOpen,
+                        imgUrl: AppConfig.redirectLogo),
                   ],
                 );
               },
@@ -137,13 +135,16 @@ class RedeemedView extends StatelessWidget {
               const Spacer(),
               Expanded(
                 flex: 12,
-                child: GestureDetector(
-                  onTap: () async {
-                    await StoreRedirect.redirect(androidAppId: apkId);
-                  },
-                  child: Image.asset(
-                    ImageConstant.apply,
-                    height: Get.height * 0.05,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: () async {
+                      await StoreRedirect.redirect(androidAppId: apkId);
+                    },
+                    child: Image.asset(
+                      ImageConstant.apply,
+                      height: Get.height * 0.05,
+                    ),
                   ),
                 ),
               ),
@@ -163,11 +164,14 @@ class RedeemedView extends StatelessWidget {
               ),
               Expanded(
                 flex: 3,
-                child: Text(
-                  overflow: TextOverflow.ellipsis,
-                  '₹ ${(NumberFormat.currency(locale: 'HI').format(minLoneAmount).replaceAll("INR", ''))} - ${(NumberFormat.currency(locale: "HI").format(maxLoneAmount).replaceAll("INR", ''))}',
-                  style: TextStyleConstant.bold18
-                      .copyWith(color: ColorConstant.black),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    overflow: TextOverflow.ellipsis,
+                    '₹ ${(NumberFormat.currency(locale: 'HI').format(minLoneAmount).replaceAll("INR", ''))} - ${(NumberFormat.currency(locale: "HI").format(maxLoneAmount).replaceAll("INR", ''))}',
+                    style: TextStyleConstant.bold18
+                        .copyWith(color: ColorConstant.black),
+                  ),
                 ),
               )
             ],

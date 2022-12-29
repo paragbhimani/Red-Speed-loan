@@ -47,6 +47,8 @@ class ContactDetailView extends StatelessWidget {
                       contactDetailController.validator();
                       if(controller.emailError == null && controller.numberError == null){
                         Get.toNamed(Routes.ageDetailView);
+                        AppOpenAdManager.interstitialAd?.show();
+                        AppOpenAdManager.loadInterstitial();
                       }
                     }),
                     NativeBig()

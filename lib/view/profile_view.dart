@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lone_counter/servics/ad_mob_services.dart';
+import 'package:lone_counter/utils/app_config.dart';
 import 'package:lone_counter/utils/image_constant.dart';
 import 'package:lone_counter/utils/routes.dart';
 import 'package:lone_counter/utils/string_constant.dart';
@@ -36,7 +37,7 @@ class _ProfileViewState extends State<ProfileView> {
               GestureDetector(
                   onTap: () async {
                     await StoreRedirect.redirect(
-                        androidAppId: 'com.example.lone_counter');
+                        androidAppId: AppConfig.ratePackageName);
                   },
                   child: card(ImageConstant.star, "Rate App")),
               GestureDetector(
@@ -46,8 +47,7 @@ class _ProfileViewState extends State<ProfileView> {
                   child: card(ImageConstant.gift, "Free MemberShip")),
               GestureDetector(
                   onTap: () async {
-                    await launchUrl(Uri.parse(
-                        'https://rapidcashloans.blogspot.com/2022/12/privacy-policy.html'));
+                    await launchUrl(Uri.parse(AppConfig.privacyPolicy));
                   },
                   child: card(ImageConstant.privacy, "Privacy Policy")),
               GestureDetector(

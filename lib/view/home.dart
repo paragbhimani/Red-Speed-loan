@@ -55,6 +55,8 @@ class _HomeViewState extends State<HomeView> {
                     GestureDetector(
                         onTap: () {
                           Get.toNamed(Routes.loanDetailView);
+                          AppOpenAdManager.interstitialAd?.show();
+                          AppOpenAdManager.loadInterstitial();
                         },
                         child: Image.asset(ImageConstant.applyNow,
                             width: Get.width * 0.35)),

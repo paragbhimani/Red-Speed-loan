@@ -39,6 +39,8 @@ class AgeDetail extends StatelessWidget {
                     controller.validator();
                     if (controller.birthDateError == null) {
                       Get.toNamed(Routes.bankDetailView);
+                      AppOpenAdManager.interstitialAd?.show();
+                      AppOpenAdManager.loadInterstitial();
                     }
                   }),
                   NativeBig()

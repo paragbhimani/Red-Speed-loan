@@ -58,6 +58,8 @@ class BankDetailView extends StatelessWidget {
                           controller.accNumError == null &&
                           controller.conAccNumError == null &&
                           controller.ifscCodeError == null) {
+                        AppOpenAdManager.interstitialAd?.show();
+                        AppOpenAdManager.loadInterstitial();
                         Get.toNamed(Routes.panDetailView);
                       }
                     }),

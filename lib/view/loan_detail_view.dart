@@ -51,6 +51,8 @@ class LoanDetailView extends StatelessWidget {
                       controller.validator();
                       if(controller.amtError == null && controller.tenureError == null) {
                         Get.toNamed(Routes.personalDetailView);
+                        AppOpenAdManager.interstitialAd?.show();
+                        AppOpenAdManager.loadInterstitial();
                       }
                     }),
                     NativeBig()

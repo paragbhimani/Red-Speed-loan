@@ -11,15 +11,15 @@ class NetworkHelper {
       print('responce ~~~~~~~~~~~~~~~~~~> ${response.body}');
        AdsModel model = AdsModel.fromJson(json.decode(response.body));
       AppConfig.redirect = model.redirect!;
-      AppConfig.redirectlogo = model.redirectlogo!;
-      AppConfig.applogorate = model.applogo!;
-      AppConfig.native_id = model.nativeId!;
-      AppConfig.interstrial_ad = model.interstrialAd!;
-      AppConfig.banner_id = model.bannerId!;
-      AppConfig.appopen = model.appopen!;
-      AppConfig.privacypolicy = model.privacypolicy!;
-      AppConfig.ratepakagename = model.ratepakagename!;
-      AppConfig.pakagename = model.pakagename!;
+      AppConfig.redirectLogo = model.redirectlogo!;
+      AppConfig.appLogoRate = model.applogo!;
+      AppConfig.nativeId = model.nativeId!;
+      AppConfig.interstitialAd = model.interstrialAd!;
+      AppConfig.bannerId = model.bannerId!;
+      AppConfig.appOpen = model.appopen!;
+      AppConfig.privacyPolicy = model.privacypolicy!;
+      AppConfig.ratePackageName = model.ratepakagename!;
+      AppConfig.packageName = model.pakagename!;
       return AdsModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load AdsModel');

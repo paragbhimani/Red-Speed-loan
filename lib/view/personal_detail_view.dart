@@ -58,6 +58,8 @@ class PersonalDetailView extends StatelessWidget {
                         if (controller.lNameError == null &&
                             controller.fNameError == null) {
                           Get.toNamed(Routes.contactDetailView);
+                          AppOpenAdManager.interstitialAd?.show();
+                          AppOpenAdManager.loadInterstitial();
                         }
                       },
                     ),
