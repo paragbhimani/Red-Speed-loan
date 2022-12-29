@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lone_counter/helper/network_helper.dart';
 import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/routes.dart';
 
@@ -23,8 +24,8 @@ class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        appOpenAdManager.showAdIfAvailable();
         Get.offNamed(Routes.homeView);
+        appOpenAdManager.showAdIfAvailable();
       },
     );
   }

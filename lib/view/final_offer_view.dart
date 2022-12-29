@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:lone_counter/controller/final_offer_controller.dart';
 import 'package:lone_counter/servics/ad_mob_services.dart';
 import 'package:lone_counter/utils/image_constant.dart';
+import 'package:lone_counter/utils/routes.dart';
 import 'package:lone_counter/utils/string_constant.dart';
 import 'package:lone_counter/widget/app_bar.dart';
 import 'package:lone_counter/widget/customDialog.dart';
@@ -123,6 +124,14 @@ class FinalOfferView extends StatelessWidget {
                                                 storedValue);
                                             print(AppSharedPreference.value);
                                             Get.back();
+                                            Get.back();
+                                            Get.back();
+                                            Get.back();
+                                            Get.back();
+                                            Get.back();
+                                            Get.back();
+                                            Get.back();
+                                            Get.toNamed(Routes.loanStatusView);
                                             controller.update();
                                           },
                                         ),

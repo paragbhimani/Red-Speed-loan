@@ -6,7 +6,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:lone_counter/helper/network_helper.dart';
 import 'package:lone_counter/network_binding.dart';
-import 'package:lone_counter/utils/app_config.dart';
 import 'package:lone_counter/view/about_us.dart';
 import 'package:lone_counter/view/age_detail.dart';
 import 'package:lone_counter/view/bank_detail_view.dart';
@@ -32,6 +31,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
   MobileAds.instance.initialize();
+ await NetworkHelper.fetchData();
   await GetStorage.init();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -49,61 +49,57 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
   }
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: NetworkHelper.fetchData(),
-      builder: (context, snapshot) {
-        return snapshot.hasData ? GetMaterialApp(
-          getPages: [
-            GetPage(name: Routes.splashView, page: () => const SplashScreen()),
-            GetPage(name: Routes.loginView, page: () => const LogInView()),
-            GetPage(
-                name: Routes.homeView, page: () => BottomNavigationScreen()),
-            GetPage(name: Routes.ageDetailView, page: () => AgeDetail()),
-            GetPage(
-                name: Routes.calculatorView,
-                page: () => const CalculatorView()),
-            GetPage(
-                name: Routes.emiCalculatorView,
-                page: () => EmiCalculatorView()),
-            GetPage(name: Routes.loanDetailView, page: () => LoanDetailView()),
-            GetPage(
-                name: Routes.personalDetailView,
-                page: () => PersonalDetailView()),
-            GetPage(
-                name: Routes.contactDetailView,
-                page: () => ContactDetailView()),
-            GetPage(
-                name: Routes.calculatorView,
-                page: () => const CalculatorView()),
-            GetPage(
-                name: Routes.emiCalculatorView,
-                page: () => EmiCalculatorView()),
-            GetPage(name: Routes.bankDetailView, page: () => BankDetailView()),
-            GetPage(name: Routes.panDetailView, page: () => PanDetailView()),
-            GetPage(name: Routes.finalOfferView, page: () => FinalOfferView()),
-            GetPage(
-                name: Routes.freeMemberShipView,
-                page: () => const MembershipView()),
-            GetPage(
-                name: Routes.compareLoneCalculator,
-                page: () => CompareLoneCalculator()),
-            GetPage(
-                name: Routes.instantLoanView,
-                page: () => const InstantLoanView()),
-            GetPage(name: Routes.aboutUs, page: () => const AboutUs()),
-            GetPage(name: Routes.simpleCalculatorView, page: () => SimpleCalculator()),
-            GetPage(
-                name: Routes.fdCalculatorView, page: () => FdCalculatorView()),
-            GetPage(name: Routes.loanStatusView, page: () => LoanStatusView()),
-          ],
-          debugShowCheckedModeBanner: false,
-          initialRoute: Routes.splashView,
-          initialBinding: NetworkBinding(),
-        ) : SizedBox();
-      },
+    return GetMaterialApp(
+      getPages: [
+        GetPage(name: Routes.splashView, page: () => const SplashScreen()),
+        GetPage(name: Routes.loginView, page: () => const LogInView()),
+        GetPage(
+            name: Routes.homeView, page: () => BottomNavigationScreen()),
+        GetPage(name: Routes.ageDetailView, page: () => AgeDetail()),
+        GetPage(
+            name: Routes.calculatorView,
+            page: () => const CalculatorView()),
+        GetPage(
+            name: Routes.emiCalculatorView,
+            page: () => EmiCalculatorView()),
+        GetPage(name: Routes.loanDetailView, page: () => LoanDetailView()),
+        GetPage(
+            name: Routes.personalDetailView,
+            page: () => PersonalDetailView()),
+        GetPage(
+            name: Routes.contactDetailView,
+            page: () => ContactDetailView()),
+        GetPage(
+            name: Routes.calculatorView,
+            page: () => const CalculatorView()),
+        GetPage(
+            name: Routes.emiCalculatorView,
+            page: () => EmiCalculatorView()),
+        GetPage(name: Routes.bankDetailView, page: () => BankDetailView()),
+        GetPage(name: Routes.panDetailView, page: () => PanDetailView()),
+        GetPage(name: Routes.finalOfferView, page: () => FinalOfferView()),
+        GetPage(
+            name: Routes.freeMemberShipView,
+            page: () => const MembershipView()),
+        GetPage(
+            name: Routes.compareLoneCalculator,
+            page: () => CompareLoneCalculator()),
+        GetPage(
+            name: Routes.instantLoanView,
+            page: () => const InstantLoanView()),
+        GetPage(name: Routes.aboutUs, page: () => const AboutUs()),
+        GetPage(name: Routes.simpleCalculatorView, page: () => SimpleCalculator()),
+        GetPage(
+            name: Routes.fdCalculatorView, page: () => FdCalculatorView()),
+        GetPage(name: Routes.loanStatusView, page: () => LoanStatusView()),
+      ],
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.splashView,
+      initialBinding: NetworkBinding(),
     );
   }
 }
