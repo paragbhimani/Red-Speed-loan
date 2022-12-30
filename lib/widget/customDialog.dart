@@ -24,7 +24,7 @@ Widget customDialog(
                     MaterialStateProperty.all(ColorConstant.primaryColor),
               ),
               onPressed: onPressed,
-              child: const Text("ok"),
+              child: const Text("Check Loan Status"),
             )
           : const SizedBox(),
     ],

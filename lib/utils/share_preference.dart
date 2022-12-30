@@ -4,7 +4,7 @@ class AppSharedPreference {
   static final getStorage = GetStorage();
   static const id = 'id';
 
-  static Future<void> setValue(List<dynamic> value) async => await getStorage.write(id, value);
+  static void setValue(List<dynamic> value) async => getStorage.write(id, value);
 
-  static Future<List> get value async => await getStorage.read(id);
+  static List get value => getStorage.read(id) ?? [];
 }

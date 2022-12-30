@@ -112,9 +112,10 @@ class FinalOfferView extends StatelessWidget {
                                           text:
                                               "Your application $applicationId Updated Successfully",
                                           showElevated: true,
-                                          onPressed: () async {
-                                            List<dynamic> storedValue = await
-                                                AppSharedPreference.value;
+                                          onPressed: () {
+                                            print('object');
+                                            List storedValue = AppSharedPreference.value;
+                                            print(storedValue);
                                             storedValue.add({
                                               "id": applicationId,
                                               "date": DateFormat('dd/MM/yyyy')
@@ -122,17 +123,8 @@ class FinalOfferView extends StatelessWidget {
                                             });
                                             AppSharedPreference.setValue(
                                                 storedValue);
-                                            print(AppSharedPreference.value);
-                                            Get.back();
-                                            Get.back();
-                                            Get.back();
-                                            Get.back();
-                                            Get.back();
-                                            Get.back();
-                                            Get.back();
-                                            Get.back();
-                                            Get.toNamed(Routes.loanStatusView);
-                                            controller.update();
+                                            print('object');
+                                            Get.offNamedUntil(Routes.homeView,(route) =>  false);
                                           },
                                         ),
                                       );
