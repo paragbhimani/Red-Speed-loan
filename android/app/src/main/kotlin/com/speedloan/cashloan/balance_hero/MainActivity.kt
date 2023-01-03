@@ -1,4 +1,4 @@
-package com.example.lone_counter
+package com.speedloan.cashloan.balance_hero
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

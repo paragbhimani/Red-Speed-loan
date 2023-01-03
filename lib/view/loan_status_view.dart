@@ -18,7 +18,7 @@ class LoanStatusView extends StatelessWidget {
         body: SafeArea(
           child: Stack(
             children: [
-              Image.asset('assets/backgrounds/lone_status.png'),
+              Image.asset('assets/backgrounds/loan_status.jpg'),
               controller.data.isEmpty
                   ? Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.1),

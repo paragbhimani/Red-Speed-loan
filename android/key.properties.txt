@@ -1,0 +1,4 @@
+storePassword=redloan
+keyPassword=redloan
+keyAlias=redloan
+storeFile=redloan.jks

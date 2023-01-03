@@ -124,7 +124,9 @@ class FinalOfferView extends StatelessWidget {
                                             AppSharedPreference.setValue(
                                                 storedValue);
                                             print('object');
-                                            Get.offNamedUntil(Routes.homeView,(route) =>  false);
+                                            Get.offNamedUntil(Routes.homeView,  arguments: 1,(route) {
+                                              return true;
+                                            });
                                           },
                                         ),
                                       );
