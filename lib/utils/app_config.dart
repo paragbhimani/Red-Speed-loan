@@ -6,6 +6,7 @@ class AppConfig {
  static String appOpen = '';
  static String privacyPolicy = '';
  static String packageName = '';
+
  static String redirect = '';
  static String ratePackageName = '';
  static String appLogoRate = '';

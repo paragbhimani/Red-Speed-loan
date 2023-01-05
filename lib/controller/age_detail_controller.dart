@@ -11,4 +11,9 @@ class AgeDetailController extends GetxController{
     birthDateError = birthDateValidator(birthDateController.text);
     update();
   }
+  // @override
+  // void onClose() {
+  //   super.onClose();
+  //   birthDateController.clear();
+  // }
 }

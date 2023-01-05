@@ -1,5 +1,4 @@
-package com.example.lone_counter;
-
+package com.speedloan.cashloan.balance_hero;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.nativead.MediaView;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdView;
 
@@ -16,19 +16,18 @@ import java.util.Map;
 
 import io.flutter.plugins.googlemobileads.GoogleMobileAdsPlugin;
 
-class NativeAdFactorySmall implements GoogleMobileAdsPlugin.NativeAdFactory {
+class NativeAdFactoryMedium implements GoogleMobileAdsPlugin.NativeAdFactory {
 
     private final Context context;
 
-    NativeAdFactorySmall(Context context) {
+    NativeAdFactoryMedium(Context context) {
         this.context = context;
     }
 
 
-    public NativeAdView createNativeAd(
-            NativeAd nativeAd, Map<String, Object> customOptions) {
+    public  NativeAdView createNativeAd(NativeAd nativeAd, Map<String, Object> customOptions) {
         NativeAdView nativeAdView = (NativeAdView) LayoutInflater.from(context)
-                .inflate(R.layout.small_template, null);
+                .inflate(R.layout.medium_template, null);
 
 
 
@@ -51,9 +50,9 @@ class NativeAdFactorySmall implements GoogleMobileAdsPlugin.NativeAdFactory {
         }
 
 //  media
-//        MediaView mediaView = nativeAdView.findViewById(R.id.native_ad_media);
-//        mediaView.setMediaContent(nativeAd.getMediaContent());
-//        nativeAdView.setMediaView(mediaView);
+        MediaView mediaView = nativeAdView.findViewById(R.id.native_ad_media);
+        mediaView.setMediaContent(nativeAd.getMediaContent());
+        nativeAdView.setMediaView(mediaView);
 
 // button
 
@@ -94,6 +93,9 @@ class NativeAdFactorySmall implements GoogleMobileAdsPlugin.NativeAdFactory {
             nativeAdView.getStarRatingView().setVisibility(View.VISIBLE);
 
         }
+
+
+
 
         nativeAdView.setNativeAd(nativeAd);
 

@@ -14,6 +14,7 @@ class BottomNavigationController extends GetxController {
 @override
   void onInit() {
     super.onInit();
+    // print(G)
     AppOpenAdManager.loadInterstitial();
 }
   void changeIndex(int index) {
