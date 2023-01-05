@@ -16,72 +16,79 @@ class RedeemedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<RedeemedController>(builder: (controller) => SafeArea(
-      child: Stack(
-        children: [
-          Image.asset('assets/backgrounds/recomadition.jpg',
-              height: Get.height, width: Get.width, fit: BoxFit.fill),
-          Padding(
-            padding: EdgeInsets.only(
-                left: Get.width * 0.15,
-                right: Get.width * 0.15,
-                top: Get.height * 0.075),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(
-                    "All Analysis:",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: Get.width * 0.05,
-                        fontWeight: FontWeight.bold),
+    return GetBuilder<RedeemedController>(
+      builder: (controller) => SafeArea(
+        child: Stack(
+          children: [
+            Image.asset('assets/backgrounds/recomadition.jpg',
+                height: Get.height, width: Get.width, fit: BoxFit.fill),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: Get.width * 0.15,
+                  right: Get.width * 0.15,
+                  top: Get.height * 0.075),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      "All Analysis:",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: Get.width * 0.05,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(
-                    "if you apply for 3 or more loan products , the loan approve rate will be increase up to 99%",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: Get.width * 0.04,
-                        fontWeight: FontWeight.bold),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      "if you apply for 3 or more loan products , the loan approve rate will be increase up to 99%",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: Get.width * 0.04,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: Get.height / 3.6),
-            child: controller.data.isNotEmpty
-                ? ListView.builder(
-              itemCount: controller.data.length,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    const NativeSmall(),
-                    _child(
-                        maxLoneAmount: 2000000,
-                        minLoneAmount: 10000,
-                        name: "True Lone",
-                        loneInterest: '0.06%',
-                        apkId: AppConfig.appOpen,
-                        imgUrl: AppConfig.redirectLogo),
-                  ],
-                );
-              },
-            )
-                : const Center(
-              child: CircularProgressIndicator(
-                color: ColorConstant.primaryColor,
+                ],
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.only(top: Get.height / 3.6),
+              child: controller.data.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: controller.data.length,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            const NativeSmall(),
+                            _child(
+                              maxLoneAmount: 2000000,
+                              minLoneAmount: 10000,
+                              name: "True Lone",
+                              loneInterest: '0.06%',
+                              apkId: index == 0
+                                  ? AppConfig.packageName
+                                  : AppConfig.redirect,
+                              imgUrl: index == 0
+                                  ? AppConfig.appLogoRate
+                                  : AppConfig.redirectLogo,
+                            ),
+                          ],
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(
+                        color: ColorConstant.primaryColor,
+                      ),
+                    ),
+            ),
+          ],
+        ),
       ),
-    ),);
+    );
   }
 
   Widget _child(
