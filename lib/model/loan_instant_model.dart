@@ -13,5 +13,7 @@ List<LoanInstantModel> loanInstantModel = [
   LoanInstantModel(title: "Mobile Loan", subTitle: "12 Month"),
   LoanInstantModel(title: "Home Loan", subTitle: "10 Month"),
   LoanInstantModel(title: "Application Loan", subTitle: "12 Month"),
+  LoanInstantModel(title: "Small Business Loan", subTitle: "16 Month"),
+  LoanInstantModel(title: "Application Loan", subTitle: "8 Month"),
   LoanInstantModel(title: "Small Business Loan", subTitle: "12 Month"),
 ];

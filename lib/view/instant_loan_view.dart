@@ -20,6 +20,7 @@ class InstantLoanView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+
               GestureDetector(
                 onTap: (){
                   Get.toNamed(Routes.loanDetailView);
@@ -59,11 +60,11 @@ class InstantLoanView extends StatelessWidget {
                     ),
                     leading: Image.asset(ImageConstant.loanInstant),
                     title: Text(
-                      loanInstantModel[0].title ?? "",
+                      loanInstantModel[1].title ?? "",
                       style: TextStyleConstant.bold16Black,
                     ),
                     subtitle: Text(
-                      loanInstantModel[0].subTitle ?? "",
+                      loanInstantModel[1].subTitle ?? "",
                       style: TextStyleConstant.bold14Black,
                     ),
                     trailing: const Icon(Icons.keyboard_arrow_right),
@@ -84,11 +85,11 @@ class InstantLoanView extends StatelessWidget {
                     ),
                     leading: Image.asset(ImageConstant.loanInstant),
                     title: Text(
-                      loanInstantModel[0].title ?? "",
+                      loanInstantModel[2].title ?? "",
                       style: TextStyleConstant.bold16Black,
                     ),
                     subtitle: Text(
-                      loanInstantModel[0].subTitle ?? "",
+                      loanInstantModel[2].subTitle ?? "",
                       style: TextStyleConstant.bold14Black,
                     ),
                     trailing: const Icon(Icons.keyboard_arrow_right),
@@ -109,11 +110,11 @@ class InstantLoanView extends StatelessWidget {
                     ),
                     leading: Image.asset(ImageConstant.loanInstant),
                     title: Text(
-                      loanInstantModel[0].title ?? "",
+                      loanInstantModel[3].title ?? "",
                       style: TextStyleConstant.bold16Black,
                     ),
                     subtitle: Text(
-                      loanInstantModel[0].subTitle ?? "",
+                      loanInstantModel[3].subTitle ?? "",
                       style: TextStyleConstant.bold14Black,
                     ),
                     trailing: const Icon(Icons.keyboard_arrow_right),
@@ -134,11 +135,11 @@ class InstantLoanView extends StatelessWidget {
                     ),
                     leading: Image.asset(ImageConstant.loanInstant),
                     title: Text(
-                      loanInstantModel[0].title ?? "",
+                      loanInstantModel[4].title ?? "",
                       style: TextStyleConstant.bold16Black,
                     ),
                     subtitle: Text(
-                      loanInstantModel[0].subTitle ?? "",
+                      loanInstantModel[4].subTitle ?? "",
                       style: TextStyleConstant.bold14Black,
                     ),
                     trailing: const Icon(Icons.keyboard_arrow_right),
@@ -159,61 +160,11 @@ class InstantLoanView extends StatelessWidget {
                     ),
                     leading: Image.asset(ImageConstant.loanInstant),
                     title: Text(
-                      loanInstantModel[0].title ?? "",
+                      loanInstantModel[5].title ?? "",
                       style: TextStyleConstant.bold16Black,
                     ),
                     subtitle: Text(
-                      loanInstantModel[0].subTitle ?? "",
-                      style: TextStyleConstant.bold14Black,
-                    ),
-                    trailing: const Icon(Icons.keyboard_arrow_right),
-                  ),
-                ),
-              ),NativeBig(),
-              GestureDetector(
-                onTap: (){
-                  Get.toNamed(Routes.loanDetailView);
-                },
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: ListTile(
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                          color: ColorConstant.primaryColor, width: 2),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    leading: Image.asset(ImageConstant.loanInstant),
-                    title: Text(
-                      loanInstantModel[0].title ?? "",
-                      style: TextStyleConstant.bold16Black,
-                    ),
-                    subtitle: Text(
-                      loanInstantModel[0].subTitle ?? "",
-                      style: TextStyleConstant.bold14Black,
-                    ),
-                    trailing: const Icon(Icons.keyboard_arrow_right),
-                  ),
-                ),
-              ),NativeBig(),
-              GestureDetector(
-                onTap: (){
-                  Get.toNamed(Routes.loanDetailView);
-                },
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: ListTile(
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                          color: ColorConstant.primaryColor, width: 2),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    leading: Image.asset(ImageConstant.loanInstant),
-                    title: Text(
-                      loanInstantModel[0].title ?? "",
-                      style: TextStyleConstant.bold16Black,
-                    ),
-                    subtitle: Text(
-                      loanInstantModel[0].subTitle ?? "",
+                      loanInstantModel[5].subTitle ?? "",
                       style: TextStyleConstant.bold14Black,
                     ),
                     trailing: const Icon(Icons.keyboard_arrow_right),
@@ -221,6 +172,7 @@ class InstantLoanView extends StatelessWidget {
                 ),
               ),
               NativeBig(),
+
             ],
           ),
         ),
